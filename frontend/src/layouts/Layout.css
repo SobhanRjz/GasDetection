@@ -1,0 +1,26 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 4rem; /* Account for fixed header */
+}
+
+/* Ensure proper spacing and background for different pages */
+.main-content > * {
+  min-height: calc(100vh - 4rem);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 3.5rem;
+  }
+
+  .main-content > * {
+    min-height: calc(100vh - 3.5rem);
+  }
+}

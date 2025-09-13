@@ -1,0 +1,207 @@
+/* App component styles */
+.app-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  color: white;
+  background: #000; /* Temporary background to ensure visibility */
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: 1;
+  /* Fallback background in case video doesn't load */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0.0) 100%
+  );
+  z-index: 2;
+}
+
+/* Ensure gradient text works */
+.gradient-text {
+  background: linear-gradient(to right, #ffffff, #d1d5db);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Component styles */
+.content-container {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 3rem;
+  padding-right: 2rem;
+}
+
+@media (min-width: 768px) {
+  .content-container {
+    padding-left: 5rem;
+    padding-right: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content-container {
+    padding-left: 8rem;
+    padding-right: 6rem;
+  }
+}
+
+.main-title {
+  font-size: 3.125rem;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .main-title {
+    font-size: 4.375rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-title {
+    font-size: 5.625rem;
+  }
+}
+
+.subtitle {
+  font-size: 1.75rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .subtitle {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .subtitle {
+    font-size: 3.75rem;
+  }
+}
+
+.description {
+  font-size: 1.25rem;
+  color: #e5e7eb;
+  margin-bottom: 3rem;
+  line-height: 1.625;
+  max-width: 28rem;
+}
+
+@media (min-width: 768px) {
+  .description {
+    font-size: 1.375rem;
+    max-width: 32rem;
+  }
+}
+
+/* Modern button styles */
+.modern-button {
+  background: linear-gradient(135deg, #212223, #222224);
+  border: 1px solid rgba(139, 139, 139, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 1.25rem 3rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  border-radius: 1rem;
+  width: fit-content;
+  margin: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
+  cursor: pointer;
+}
+
+.modern-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.modern-button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3), 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.modern-button:hover::before {
+  left: 100%;
+}
+
+.modern-button:active {
+  transform: translateY(0) scale(0.98);
+  transition: all 0.1s;
+}
+
+/* CTA buttons container */
+.cta-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Secondary CTA button */
+.secondary-button {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  border-radius: 0.75rem;
+  width: fit-content;
+  margin: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.secondary-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.secondary-button:active {
+  transform: translateY(0);
+}
