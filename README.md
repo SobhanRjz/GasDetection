@@ -114,7 +114,7 @@ GasDetection_Demo/
 
 4. **Start the server**
    ```bash
-   python main.py
+   cd backend && uvicorn main:app --reload --host 0.0.0.0 --port 8000
    ```
 
 ## 📖 Usage

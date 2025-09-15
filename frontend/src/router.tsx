@@ -2,9 +2,12 @@ import { createBrowserRouter, Outlet } from 'react-router-dom';
 import Layout from './layouts/Layout';
 import HomeLayout from './layouts/HomeLayout';
 import Home from './pages/Home';
+import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Settings from './pages/Settings';
 import About from './pages/About';
+import HeaderDemo from './pages/HeaderDemo';
+import ChartMonitoring from './pages/ChartMonitoring';
 
 // Create wrapper components that include Outlet
 const HomeLayoutWrapper = () => (
@@ -29,6 +32,11 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
     ],
+  },
+  {
+    path: '/login',
+    element: <Login />,
+    
   },
   {
     path: '/dashboard',
@@ -60,4 +68,18 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: '/header-demo',
+    element: <HeaderDemo />,
+  },
+  {
+    path: '/chart-monitoring',
+    element: <LayoutWrapper />,
+    children: [
+      {
+        index: true,
+        element: <ChartMonitoring />,
+      },
+    ],
+  }
 ]);

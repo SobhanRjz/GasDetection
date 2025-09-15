@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import './Home.css'
 
 export default function Home() {
+  const navigate = useNavigate();
+
   return (
     <div className="app-container">
 
@@ -42,14 +45,14 @@ export default function Home() {
         <div className="cta-buttons">
           <button
             className="modern-button"
-            onClick={() => alert("Login / Sign in clicked")}
+            onClick={() => navigate('/login')}
           >
             Get Started
           </button>
 
           <button
             className="secondary-button"
-            onClick={() => alert("Learn More clicked")}
+            onClick={() => alert('Learn More functionality coming soon!')}
           >
             Learn More
           </button>

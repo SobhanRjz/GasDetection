@@ -1,0 +1,121 @@
+/* Header Demo Page Styles */
+
+/* Page Container */
+.header-demo-page {
+  @apply min-h-screen bg-slate-900;
+}
+
+/* Main Content Container */
+.header-demo-main {
+  @apply max-w-6xl mx-auto px-6 py-12;
+}
+
+/* Content Card */
+.header-demo-card {
+  @apply bg-white/90 backdrop-blur-md rounded-xl p-8 shadow-lg;
+}
+
+/* Main Title */
+.header-demo-title {
+  @apply text-3xl font-bold text-slate-800 mb-6;
+}
+
+/* Features Grid */
+.header-demo-features {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8;
+}
+
+/* Feature Card */
+.feature-card-blue {
+  @apply bg-blue-50 p-6 rounded-lg;
+}
+
+.feature-card-green {
+  @apply bg-green-50 p-6 rounded-lg;
+}
+
+.feature-card-purple {
+  @apply bg-purple-50 p-6 rounded-lg;
+}
+
+/* Feature Title */
+.feature-title {
+  @apply text-lg font-semibold mb-2;
+}
+
+.feature-title-blue {
+  @apply text-blue-900;
+}
+
+.feature-title-green {
+  @apply text-green-900;
+}
+
+.feature-title-purple {
+  @apply text-purple-900;
+}
+
+/* Feature Description */
+.feature-description {
+  @apply text-blue-700;
+}
+
+.feature-description-green {
+  @apply text-green-700;
+}
+
+.feature-description-purple {
+  @apply text-purple-700;
+}
+
+/* Key Features Section */
+.key-features-section {
+  @apply bg-slate-50 p-6 rounded-lg;
+}
+
+.key-features-title {
+  @apply text-xl font-semibold text-slate-800 mb-4;
+}
+
+.key-features-list {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-700;
+}
+
+.key-feature-item {
+  @apply flex items-center gap-2;
+}
+
+.key-feature-bullet {
+  @apply w-2 h-2 bg-blue-500 rounded-full;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-demo-main {
+    @apply px-4 py-8;
+  }
+
+  .header-demo-card {
+    @apply p-6;
+  }
+
+  .header-demo-title {
+    @apply text-2xl;
+  }
+
+  .feature-card-blue,
+  .feature-card-green,
+  .feature-card-purple {
+    @apply p-4;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-demo-features {
+    @apply grid-cols-1 gap-4;
+  }
+
+  .key-features-list {
+    @apply grid-cols-1;
+  }
+}

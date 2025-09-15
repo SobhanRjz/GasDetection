@@ -1,26 +1,29 @@
+:root {
+  --bg: #ffffff;
+}
+
 .layout {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  background: var(--bg); /* Light background for dashboard pages */
 }
 
 .main-content {
   flex: 1;
-  padding-top: 4rem; /* Account for fixed header */
+  padding-top: 1rem; /* Small padding for modern header */
+  min-height: calc(100vh - 2rem);
 }
 
-/* Ensure proper spacing and background for different pages */
-.main-content > * {
-  min-height: calc(100vh - 4rem);
+/* Ensure header appears properly */
+.layout .modern-header {
+  position: relative;
+  z-index: 100;
+  margin-bottom: 1rem;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .main-content {
-    padding-top: 3.5rem;
-  }
-
-  .main-content > * {
-    min-height: calc(100vh - 3.5rem);
+    padding-top: 0.5rem;
   }
 }

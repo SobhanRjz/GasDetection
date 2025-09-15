@@ -1,8 +1,11 @@
 .home-layout {
   min-height: 100vh;
+  position: relative;
 }
 
 .home-main-content {
   /* Ensure full height for home page content */
   height: 100vh;
+  position: relative;
+  z-index: 1;
 }

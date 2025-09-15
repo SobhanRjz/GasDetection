@@ -117,23 +117,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="team-section">
-        <h2 className="section-title">Our Team</h2>
-        <div className="team-grid">
-          {team.map((member, index) => (
-            <div key={index} className="team-card">
-              <div className="team-avatar">
-                {member.name.split(' ').map(n => n[0]).join('')}
-              </div>
-              <h3 className="team-name">{member.name}</h3>
-              <p className="team-role">{member.role}</p>
-              <p className="team-expertise">{member.expertise}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Contact Section */}
       <section className="contact-section">
         <h2 className="section-title">Get in Touch</h2>
