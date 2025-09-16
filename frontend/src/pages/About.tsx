@@ -34,23 +34,6 @@ export default function About() {
     }
   ];
 
-  const team = [
-    {
-      name: 'Dr. Sarah Johnson',
-      role: 'Chief Safety Officer',
-      expertise: 'Gas Detection Systems'
-    },
-    {
-      name: 'Michael Chen',
-      role: 'Lead Engineer',
-      expertise: 'IoT & Sensors'
-    },
-    {
-      name: 'Dr. Emily Rodriguez',
-      role: 'Data Scientist',
-      expertise: 'Analytics & AI'
-    }
-  ];
 
   return (
     <div className="about">
