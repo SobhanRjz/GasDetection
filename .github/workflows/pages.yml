@@ -24,12 +24,14 @@ jobs:
     - name: Install dependencies
       run: |
         cd frontend
-        npm ci
+        npm ci --prefer-offline --no-audit
 
     - name: Build
       run: |
         cd frontend
         npm run build
+      env:
+        NODE_OPTIONS: --max_old_space_size=4096
 
     - name: Setup Pages
       uses: actions/configure-pages@v4
