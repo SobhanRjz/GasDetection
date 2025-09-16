@@ -22,7 +22,7 @@ export default function Home() {
         onLoadStart={() => console.log('Video started loading')}
         onCanPlay={() => console.log('Video can play')}
       >
-        <source src="/bg.mp4" type="video/mp4" />
+        <source src={`${import.meta.env.BASE_URL}bg.mp4`} type="video/mp4" />
         <source src="./bg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>

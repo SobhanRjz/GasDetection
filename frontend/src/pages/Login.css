@@ -112,7 +112,7 @@
   width: 13rem;
   height: 13rem;
   background-color: rgba(255, 255, 255, 0.1);
-  background-image: url('/logo.png');
+  background-image: url('../assets/logo.png');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
