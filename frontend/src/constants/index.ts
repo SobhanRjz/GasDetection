@@ -3,7 +3,7 @@ export const APP_NAME = 'Gas Safety';
 export const APP_VERSION = '1.0.0';
 
 // API endpoints
-export const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
+export const API_BASE_URL = process.env.REACT_APP_API_URL || '/api';
 
 // Routes
 export const ROUTES = {
