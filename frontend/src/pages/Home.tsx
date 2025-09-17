@@ -1,26 +1,40 @@
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 import './Home.css'
 
 export default function Home() {
   const navigate = useNavigate();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      const handleCanPlay = () => {
+        video.setAttribute('data-loaded', 'true');
+      };
+      
+      video.addEventListener('canplay', handleCanPlay);
+      return () => video.removeEventListener('canplay', handleCanPlay);
+    }
+  }, []);
 
   return (
     <div className="app-container">
 
-      {/* Background video */}
+      {/* Background video with preload optimization */}
       <video
+        ref={videoRef}
         className="background-video"
         autoPlay
         loop
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
+        poster={`${import.meta.env.BASE_URL}login-bg.jpg`}
         onError={(e) => {
           console.error('Video failed to load:', e);
-          console.log('Video src:', e.currentTarget.src);
+          e.currentTarget.style.display = 'none';
         }}
-        onLoadStart={() => console.log('Video started loading')}
-        onCanPlay={() => console.log('Video can play')}
       >
         <source src={`${import.meta.env.BASE_URL}bg.mp4`} type="video/mp4" />
         <source src="./bg.mp4" type="video/mp4" />

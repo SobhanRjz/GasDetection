@@ -21,21 +21,22 @@
   /* Performance optimizations */
   will-change: transform;
   transform: translateZ(0);
-  /* Progressive loading */
+  /* Progressive loading with faster transition */
   opacity: 0;
-  animation: fadeInBg 1.2s ease-out forwards;
+  animation: fadeInBg 0.8s ease-out forwards;
+  /* Preload hint */
+  background-color: #667eea;
 }
 
 /* Progressive background loading animation */
 @keyframes fadeInBg {
   0% {
     opacity: 0;
-  }
-  50% {
-    opacity: 0.7;
+    transform: scale(1.05);
   }
   100% {
     opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -100,6 +101,21 @@
     0 20px 60px rgba(0, 0, 0, 0.1),
     25px 25px 50px -12px rgba(0, 0, 0, 0.2);
   padding: 2rem;
+  /* Smooth card entrance */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideInCard 0.8s ease-out 0.2s forwards;
+}
+
+@keyframes slideInCard {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .login-logo {
@@ -124,6 +140,20 @@
   /* Performance optimization */
   will-change: transform;
   transform: translateZ(0);
+  /* Smooth loading transition */
+  opacity: 0;
+  animation: fadeInLogo 1s ease-out 0.3s forwards;
+}
+
+@keyframes fadeInLogo {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Fallback when logo image is not available */

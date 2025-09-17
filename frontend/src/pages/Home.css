@@ -19,6 +19,13 @@
   z-index: 1;
   /* Fallback background in case video doesn't load */
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  /* Smooth transition when video loads */
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.background-video[data-loaded="true"] {
+  opacity: 1;
 }
 
 .dark-overlay {
