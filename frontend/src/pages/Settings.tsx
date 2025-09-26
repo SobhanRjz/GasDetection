@@ -85,11 +85,11 @@ export default function Settings() {
 
         {/* Thresholds Section */}
         <section className="settings-section">
-          <h2 className="section-title">Thresholds</h2>
+          <h2 className="section-title">Set Point</h2>
 
           <div className="setting-item">
             <div className="setting-info">
-              <h3 className="setting-label">Gas Level Threshold</h3>
+              <h3 className="setting-label">Gas Level</h3>
               <p className="setting-description">Alert when gas level exceeds this percentage</p>
             </div>
             <div className="slider-container">

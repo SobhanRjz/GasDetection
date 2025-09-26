@@ -47,6 +47,20 @@
   letter-spacing: 0.025em;
 }
 
+.page-title {
+  color: #cbd5e1;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.025em;
+  opacity: 0.9;
+}
+
+.page-title::before {
+  content: '/';
+  color: #64748b;
+  margin-right: 0.5rem;
+}
+
 /* Navigation Section - Middle */
 .nav-section {
   display: none;
@@ -193,6 +207,10 @@
 
   .brand-name {
     font-size: 1rem;
+  }
+
+  .page-title {
+    font-size: 0.75rem;
   }
 }
 

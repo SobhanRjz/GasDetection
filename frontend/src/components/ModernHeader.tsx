@@ -16,10 +16,31 @@ const ModernHeader: React.FC = () => {
   const navItems = [
     { path: '/', label: 'Home' },
     { path: '/dashboard', label: 'Dashboard' },
+    { path: '/alert-details', label: 'Alert Details' },
     { path: '/chart-monitoring', label: 'Chart Monitoring' },
     { path: '/about', label: 'About' },
     { path: '/settings', label: 'Settings' }
   ];
+
+  // Get page title based on current route
+  const getPageTitle = () => {
+    switch (location.pathname) {
+      case '/':
+        return 'Home';
+      case '/dashboard':
+        return 'Dashboard';
+      case '/chart-monitoring':
+        return 'Chart Monitoring';
+      case '/about':
+        return 'About';
+      case '/settings':
+        return 'Settings';
+      case '/alert-details':
+        return 'Alert Details';
+      default:
+        return 'G.C.S';
+    }
+  };
 
   const handleContactClick = () => {
     // Scroll to contact section or open contact modal
@@ -32,6 +53,7 @@ const ModernHeader: React.FC = () => {
         {/* Brand Section - Left */}
         <div className="brand-section">
           <span className="brand-name">G.C.S</span>
+          <span className="page-title">{getPageTitle()}</span>
         </div>
 
         {/* Navigation - Middle (Desktop) */}

@@ -8,6 +8,7 @@ import Settings from './pages/Settings';
 import About from './pages/About';
 import HeaderDemo from './pages/HeaderDemo';
 import ChartMonitoring from './pages/ChartMonitoring';
+import AlertDetails from './pages/AlertDetails';
 
 // Create wrapper components that include Outlet
 const HomeLayoutWrapper = () => (
@@ -79,6 +80,16 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <ChartMonitoring />,
+      },
+    ],
+  },
+  {
+    path: '/alert-details',
+    element: <LayoutWrapper />,
+    children: [
+      {
+        index: true,
+        element: <AlertDetails />,
       },
     ],
   }
