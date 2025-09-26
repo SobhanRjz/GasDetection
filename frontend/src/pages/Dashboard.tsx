@@ -32,18 +32,6 @@ export default function Dashboard() {
     crestFactor: 3.1
   });
   
-  // Suction/Discharge detailed data
-  const [suctionData, setSuctionData] = useState({
-    pressure: 42.5, // bar (inlet pressure)
-    temperature: 18.5, // °C (ground temperature)
-    flowRate: 85420 // m³/h
-  });
-  
-  const [dischargeData, setDischargeData] = useState({
-    pressure: 65.8, // bar (compressed pressure)
-    temperature: 85.4, // °C (compression heating)
-    flowRate: 85380 // m³/h
-  });
 
   // Live data simulation
   useEffect(() => {
@@ -128,19 +116,6 @@ export default function Dashboard() {
         crestFactor: Math.max(2.8, Math.min(3.6, prev.crestFactor + (Math.random() - 0.5) * 0.08))
       }));
 
-      // Suction data
-      setSuctionData(prev => ({
-        pressure: Math.max(40.0, Math.min(45.0, prev.pressure + (Math.random() - 0.5) * 0.6)),
-        temperature: Math.max(15, Math.min(22, prev.temperature + (Math.random() - 0.5) * 0.8)),
-        flowRate: Math.max(84000, Math.min(87000, prev.flowRate + (Math.random() - 0.5) * 800))
-      }));
-
-      // Discharge data
-      setDischargeData(prev => ({
-        pressure: Math.max(63, Math.min(68, prev.pressure + (Math.random() - 0.5) * 0.4)),
-        temperature: Math.max(80, Math.min(90, prev.temperature + (Math.random() - 0.5) * 1.2)),
-        flowRate: Math.max(83800, Math.min(86800, prev.flowRate + (Math.random() - 0.5) * 600))
-      }));
 
     }, 2000); // Update every 2 seconds
 
@@ -179,7 +154,6 @@ export default function Dashboard() {
     { id: 2, title: 'Temperature Alert', desc: 'Temperature fluctuation detected in sector 3', time: '5 min ago', absoluteTime: '2024-01-15 14:25:00', severity: 'medium', sensor: 'Temp-03', area: 'Sector 3', acknowledged: false, signalStatus: 'HH', aiAnalysis: 'False alarm - calibration test in progress. No safety risk detected.', aiStatus: 'Normal', aiAccuracy: 96.8 },
     { id: 3, title: 'System Maintenance', desc: 'Scheduled maintenance due for sensor array', time: '1 hour ago', absoluteTime: '2024-01-15 13:30:00', severity: 'low', sensor: 'System', area: 'Network', acknowledged: false, signalStatus: 'Normal', aiAnalysis: 'Routine maintenance required within 24 hours.', aiStatus: 'Normal', aiAccuracy: 89.7 },
     { id: 4, title: 'Network Latency', desc: 'Increased response time from remote sensors', time: '2 hours ago', absoluteTime: '2024-01-15 12:30:00', severity: 'medium', sensor: 'Network', area: 'Gateway', acknowledged: false, signalStatus: 'LL', aiAnalysis: 'Sensor malfunction detected. Signal unreliable, no actual safety concern.', aiStatus: 'Low attention', aiAccuracy: 92.1 },
-    { id: 5, title: 'Calibration Required', desc: 'Sensor calibration check needed', time: '3 hours ago', absoluteTime: '2024-01-15 11:30:00', severity: 'low', sensor: 'Cal-02', area: 'Lab', acknowledged: false, signalStatus: 'HH', aiAnalysis: 'Planned maintenance spike - equipment functioning normally.', aiStatus: 'Normal', aiAccuracy: 94.3 },
   ]);
 
   const filteredAlerts = alerts.filter(alert => {
@@ -590,52 +564,6 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              {/* Suction/Discharge Card */}
-              <div className="detail-card">
-                <div className="detail-card__header">
-                  <h3 className="detail-card__title">Suction/Discharge Status</h3>
-                  <span className="detail-card__badge">Live Data</span>
-                </div>
-                <div className="detail-card__content">
-                  <div className="sd-comparison">
-                    <div className="sd-side">
-                      <h4 className="sd-title">Suction Side</h4>
-                      <div className="sd-metrics">
-                        <div className="sd-metric">
-                          <span className="sd-label">Pressure</span>
-                          <span className="sd-value">{suctionData.pressure.toFixed(1)} <small>bar</small></span>
-                        </div>
-                        <div className="sd-metric">
-                          <span className="sd-label">Temperature</span>
-                          <span className="sd-value">{suctionData.temperature.toFixed(1)} <small>°C</small></span>
-                        </div>
-                        <div className="sd-metric">
-                          <span className="sd-label">Flow Rate</span>
-                          <span className="sd-value">{Math.round(suctionData.flowRate).toLocaleString()} <small>m³/h</small></span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="sd-divider"></div>
-                    <div className="sd-side">
-                      <h4 className="sd-title">Discharge Side</h4>
-                      <div className="sd-metrics">
-                        <div className="sd-metric">
-                          <span className="sd-label">Pressure</span>
-                          <span className="sd-value">{dischargeData.pressure.toFixed(1)} <small>bar</small></span>
-                        </div>
-                        <div className="sd-metric">
-                          <span className="sd-label">Temperature</span>
-                          <span className="sd-value">{dischargeData.temperature.toFixed(1)} <small>°C</small></span>
-                        </div>
-                        <div className="sd-metric">
-                          <span className="sd-label">Flow Rate</span>
-                          <span className="sd-value">{Math.round(dischargeData.flowRate).toLocaleString()} <small>m³/h</small></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
               {/* Vibration Spectrum Card */}
               <div className="detail-card detail-card--wide">

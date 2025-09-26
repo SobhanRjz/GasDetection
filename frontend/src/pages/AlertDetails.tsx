@@ -121,34 +121,6 @@ export default function AlertDetails() {
         { text: 'Backup sensors active', status: 'running' },
         { text: 'IT team investigating', status: 'in_progress' }
       ]
-    },
-    { 
-      id: 5, 
-      title: 'Calibration Required', 
-      desc: 'Sensor calibration check needed', 
-      time: '3 hours ago', 
-      absoluteTime: '2024-01-15 11:30:00', 
-      severity: 'low', 
-      sensor: 'Cal-02', 
-      area: 'Lab', 
-      acknowledged: false,
-      signalStatus: 'HH',
-      aiAnalysis: 'Planned maintenance spike - equipment functioning normally.', 
-      aiStatus: 'Normal', 
-      aiAccuracy: 94.3,
-      location: 'Laboratory Section',
-      sensorType: 'Calibration Gas Sensor',
-      currentValue: 6250,
-      thresholdValue: 6250,
-      unit: 'PPM',
-      trend: 'Expected',
-      duration: '15 minutes',
-      sparklineData: [6800, 6600, 6400, 6300, 6250], // Expected calibration readings (25% LEL)
-      actions: [
-        { text: 'Calibration gas applied', status: 'completed' },
-        { text: 'Sensor response verified', status: 'completed' },
-        { text: 'Calibration completed', status: 'completed' }
-      ]
     }
   ]);
 

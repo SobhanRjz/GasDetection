@@ -2181,7 +2181,8 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-xl);
-  align-items: start;
+  align-items: stretch;
+  margin-bottom: var(--space-xl);
 }
 
 .detail-card--wide {
