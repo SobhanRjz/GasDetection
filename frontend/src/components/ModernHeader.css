@@ -10,15 +10,15 @@
   max-width: 72rem;
   margin: 0 auto;
   padding: 0.75rem 1.5rem;
-  background: #ffffff;
+  background: #000000;
   backdrop-filter: blur(12px);
   border-radius: 0.75rem;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  box-shadow: 0 1px 3px 0 rgb(255 255 255 / 0.1), 0 1px 2px -1px rgb(255 255 255 / 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #333333;
 }
 
 /* Brand Section - Left */
@@ -32,16 +32,16 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background-color: rgba(139, 92, 246, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  box-shadow: 0 1px 2px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .brand-name {
-  color: #0f172a;
+  color: #ffffff;
   font-weight: 600;
   font-size: 1.125rem;
   letter-spacing: 0.025em;
@@ -68,7 +68,7 @@
 }
 
 .nav-link {
-  color: #64748b;
+  color: #e2e8f0;
   font-weight: 500;
   font-size: 1rem;
   letter-spacing: 0.025em;
@@ -80,20 +80,20 @@
 }
 
 .nav-link:hover {
-  color: #0f172a;
-  background-color: #f8fafc;
+  color: #ffffff;
+  background-color: #1f2937;
 }
 
 .nav-link:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #8B5CF6, 0 0 0 4px rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px rgba(255, 255, 255, 0.3);
 }
 
 /* Navigation Link Active State */
 .nav-link.active {
-  background-color: rgba(139, 92, 246, 0.1);
-  color: #8B5CF6;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(255, 255, 255, 0.2);
 }
 
 .nav-link.active::after {
@@ -108,7 +108,7 @@
   transform: translateX(-50%);
   width: 0;
   height: 0.125rem;
-  background-color: #A78BFA;
+  background-color: #ffffff;
   transition: all 0.2s ease-out;
 }
 
@@ -123,8 +123,8 @@
 }
 
 .cta-button {
-  background-color: #8B5CF6;
-  color: white;
+  background-color: #ffffff;
+  color: #000000;
   font-weight: 500;
   font-size: 1rem;
   padding: 0.75rem 1.5rem;
@@ -133,14 +133,14 @@
   align-items: center;
   gap: 0.5rem;
   transition: all 0.2s ease-out;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  border: 2px solid rgba(139, 92, 246, 0.3);
+  box-shadow: 0 1px 3px 0 rgb(255 255 255 / 0.2), 0 1px 2px -1px rgb(255 255 255 / 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   cursor: pointer;
 }
 
 .cta-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #A78BFA, 0 0 0 4px rgba(167, 139, 250, 0.5);
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px rgba(255, 255, 255, 0.5);
 }
 
 .cta-button:active {
@@ -149,10 +149,10 @@
 
 /* CTA Button Hover Effects */
 .cta-button:hover {
-  background-color: #7C3AED;
-  border-color: #A78BFA;
+  background-color: #f8f8f8;
+  border-color: #ffffff;
   transform: translateY(-1px);
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  box-shadow: 0 4px 6px -1px rgb(255 255 255 / 0.3), 0 2px 4px -2px rgb(255 255 255 / 0.3);
 }
 
 /* Mobile Menu Toggle */
@@ -175,13 +175,13 @@
 
 .mobile-menu-toggle:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #8B5CF6, 0 0 0 4px rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px rgba(255, 255, 255, 0.3);
 }
 
 .mobile-menu-bar {
   width: 1.5rem;
   height: 0.125rem;
-  background-color: #cbd5e1;
+  background-color: #e2e8f0;
   transition: all 0.2s ease-out;
 }
 
@@ -201,7 +201,7 @@
 .cta-button:focus-visible,
 .mobile-menu-toggle:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #8B5CF6, 0 0 0 4px rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px rgba(255, 255, 255, 0.3);
 }
 
 /* High contrast mode support */
@@ -216,8 +216,8 @@
   }
 
   .nav-link:hover {
-    background-color: rgba(139, 92, 246, 0.3);
-    color: #A78BFA;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
   }
 
   .brand-name {

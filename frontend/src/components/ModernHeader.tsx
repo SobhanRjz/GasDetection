@@ -11,7 +11,7 @@ const BrandIcon = () => (
 
 const ArrowRightIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="12" cy="12" r="10" fill="#8B5CF6"/>
+    <circle cx="12" cy="12" r="10" fill="#000"/>
     <path d="M8 12L16 12M16 12L12 8M16 12L12 16" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
@@ -37,10 +37,7 @@ const ModernHeader: React.FC = () => {
       <div className="modern-header-container">
         {/* Brand Section - Left */}
         <div className="brand-section">
-          <div className="brand-icon">
-            <BrandIcon />
-          </div>
-          <span className="brand-name">GasDetection</span>
+          <span className="brand-name">G.C.S</span>
         </div>
 
         {/* Navigation - Middle (Desktop) */}
