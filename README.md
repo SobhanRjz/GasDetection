@@ -1,5 +1,21 @@
 # Gas Safety Decision Support System
 
+<div align="center">
+
+[![Live Demo](https://img.shields.io/badge/demo-live-success?style=for-the-badge)](https://sobhanrjz.github.io/GasDetection/)
+[![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](LICENSE)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python)](https://www.python.org/)
+
+**[🌐 Live Demo](https://sobhanrjz.github.io/GasDetection/)** | **[📖 Documentation](#-installation)** | **[🐛 Report Bug](#-support)** | **[✨ Request Feature](#-contributing)**
+
+</div>
+
+---
+
+## 📋 Overview
+
 A comprehensive gas detection and monitoring system designed for industrial and commercial environments. This application provides real-time monitoring, advanced analytics, and intelligent alerts to ensure workplace safety.
 
 ## 🚀 Features
@@ -75,7 +91,7 @@ GasDetection_Demo/
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/sobhanrjz/GasDetection.git
    cd GasDetection_Demo/frontend
    ```
 
@@ -224,9 +240,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 For support and questions:
-- **Email**: support@gassafety.com #temp
-- **Documentation**: [Internal Wiki](https://wiki.company.com/gas-safety)
-- **Issue Tracker**: [GitHub Issues](https://github.com/company/gas-safety/issues)
+- **Live Demo**: [https://sobhanrjz.github.io/GasDetection/](https://sobhanrjz.github.io/GasDetection/)
+- **Email**: support@gassafety.com
+- **Issue Tracker**: [GitHub Issues](https://github.com/sobhanrjz/GasDetection/issues)
 
 ## 🔄 Version History
 
@@ -236,7 +252,20 @@ For support and questions:
 - Alert management system
 - Responsive design for mobile devices
 - Multi-sensor integration
+- Dark/Light theme support
+
+## 🌟 Acknowledgments
+
+- Built for industrial safety and environmental monitoring
+- Designed with modern web technologies and best practices
+- Optimized for performance and user experience
 
 ---
 
+<div align="center">
+
 **Built with ❤️ for workplace safety and environmental monitoring**
+
+[⬆ Back to Top](#gas-safety-decision-support-system)
+
+</div>
