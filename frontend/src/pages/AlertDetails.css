@@ -35,6 +35,18 @@
   --danger: #ef4444;      /* red-500 */
 }
 
+[data-theme="dark"] .alert-details {
+  --ink: #f1f5f9;
+  --muted: #94a3b8;
+  --muted-bg: #0f172a;
+  --card: #1e293b;
+  --border: #334155;
+  --info: #3b82f6;
+  --ok: #10b981;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+}
+
 .alert-details {
   padding: var(--space-2xl);
   max-width: 1400px;

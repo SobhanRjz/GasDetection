@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ThemeToggle } from '../components/ThemeToggle';
 import './AlertDetails.css';
 
 export default function AlertDetails() {
@@ -208,6 +209,7 @@ export default function AlertDetails() {
 
   return (
     <div className="alert-details">
+      <ThemeToggle />
       <div className="alert-details__header">
         <button 
           className="back-btn"
@@ -294,14 +296,18 @@ export default function AlertDetails() {
                   </span>
                   <span className="badge-label">AI Prediction</span>
                 </div>
-                <div className="badge-separator">•</div>
-                <div className="badge-group__item">
-                  <span className="signal-badge">
-                    <span className="signal-icon">📶</span>
-                    <span className="signal-text">{selectedAlert.signalStatus}</span>
-                  </span>
-                  <span className="badge-label">Signal Detection</span>
-                </div>
+                {selectedAlert.title !== 'Network Latency' && selectedAlert.title !== 'System Maintenance' && (
+                  <>
+                    <div className="badge-separator">•</div>
+                    <div className="badge-group__item">
+                      <span className="signal-badge">
+                        <span className="signal-icon">📶</span>
+                        <span className="signal-text">{selectedAlert.signalStatus}</span>
+                      </span>
+                      <span className="badge-label">Signal Detection</span>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>

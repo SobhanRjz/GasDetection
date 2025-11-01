@@ -21,6 +21,11 @@
   border: 1px solid #333333;
 }
 
+[data-theme="dark"] .modern-header-container {
+  background: #1e293b;
+  border-color: #475569;
+}
+
 /* Brand Section - Left */
 .brand-section {
   display: flex;

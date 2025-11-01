@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ThemeToggle } from '../components/ThemeToggle';
 import './Dashboard.css';
 
 export default function Dashboard() {
@@ -7,14 +8,13 @@ export default function Dashboard() {
   
   // Live industrial monitoring data with realistic variations
   const [gasConcentration, setGasConcentration] = useState(8.5); // PPM (LEL for methane is ~50,000 PPM, normal is <10 PPM)
-  const [inletPressure, setInletPressure] = useState(42.5); // bar (typical gas transmission pressure 40-70 bar)
+  const [inletPressure, setInletPressure] = useState(64.2); // bar (typical gas transmission pressure 40-70 bar)
   const [outletPressure, setOutletPressure] = useState(65.8); // bar (compression increases pressure)
-  const [gasTemperature, setGasTemperature] = useState(38.2); // °C (ambient + compression heat)
+  const [gasTemperature, setGasTemperature] = useState(29.5); // °C (ambient + compression heat)
   const [inletTemp, setInletTemp] = useState(18.5); // °C (ground temperature)
-  const [dischargeTemp, setDischargeTemp] = useState(85.4); // °C (after compression heating)
+  const [dischargeTemp, setDischargeTemp] = useState(31.2); // °C (after compression heating)
   const [compressorStatus] = useState('Running'); // Running, Stopped, Fault
   const [vibrationLevel, setVibrationLevel] = useState(4.2); // mm/s (industrial compressor normal 3-6 mm/s)
-  const [lastMaintenance] = useState('2024-12-15');
   
   // Tier 2 secondary monitoring data
   const [inletFlowRate, setInletFlowRate] = useState(85420); // m³/h (typical gas station 50,000-150,000 m³/h)
@@ -47,7 +47,7 @@ export default function Dashboard() {
       setInletPressure(prev => {
         const variation = (Math.random() - 0.5) * 0.6;
         const newValue = prev + variation;
-        return Math.max(40, Math.min(45, newValue));
+        return Math.max(63, Math.min(65, newValue));
       });
 
       // Outlet pressure (63-68 bar range)
@@ -61,7 +61,7 @@ export default function Dashboard() {
       setGasTemperature(prev => {
         const variation = (Math.random() - 0.5) * 1.2;
         const newValue = prev + variation;
-        return Math.max(35, Math.min(42, newValue));
+        return Math.max(25, Math.min(35, newValue));
       });
 
       // Inlet temperature (15-22°C range)
@@ -71,11 +71,11 @@ export default function Dashboard() {
         return Math.max(15, Math.min(22, newValue));
       });
 
-      // Discharge temperature (80-90°C range)
+      // Discharge temperature (55-75°C range)
       setDischargeTemp(prev => {
         const variation = (Math.random() - 0.5) * 1.2;
         const newValue = prev + variation;
-        return Math.max(80, Math.min(90, newValue));
+        return Math.max(25, Math.min(35, newValue));
       });
 
       // Vibration level (3.8-4.6 mm/s range for industrial compressor)
@@ -140,7 +140,7 @@ export default function Dashboard() {
       differential: outletPressure - inletPressure // Corrected: outlet - inlet for compression ratio
     },
     temperature: { 
-      gas: { change: 1.8, trend: 'up', safeLimit: 60 }, // Safe operating limit for gas temperature
+      gas: { change: 1.8, trend: 'up', safeLimit: 100 }, // Safe operating limit for gas temperature
       inlet: { change: 0.5, trend: 'stable' },
       discharge: { change: 2.2, trend: 'up' }
     },
@@ -150,10 +150,10 @@ export default function Dashboard() {
   };
 
   const [alerts] = useState([
-    { id: 1, title: 'Gas Level Critical', desc: 'Gas concentration above safety threshold in Zone A', time: '2 min ago', absoluteTime: '2024-01-15 14:28:00', severity: 'high', sensor: 'Gas-01', area: 'Zone A', acknowledged: false, signalStatus: 'HH', aiAnalysis: 'Critical gas leak detected. Immediate evacuation recommended.', aiStatus: 'High attention', aiAccuracy: 98.5 },
-    { id: 2, title: 'Temperature Alert', desc: 'Temperature fluctuation detected in sector 3', time: '5 min ago', absoluteTime: '2024-01-15 14:25:00', severity: 'medium', sensor: 'Temp-03', area: 'Sector 3', acknowledged: false, signalStatus: 'HH', aiAnalysis: 'False alarm - calibration test in progress. No safety risk detected.', aiStatus: 'Normal', aiAccuracy: 96.8 },
-    { id: 3, title: 'System Maintenance', desc: 'Scheduled maintenance due for sensor array', time: '1 hour ago', absoluteTime: '2024-01-15 13:30:00', severity: 'low', sensor: 'System', area: 'Network', acknowledged: false, signalStatus: 'Normal', aiAnalysis: 'Routine maintenance required within 24 hours.', aiStatus: 'Normal', aiAccuracy: 89.7 },
-    { id: 4, title: 'Network Latency', desc: 'Increased response time from remote sensors', time: '2 hours ago', absoluteTime: '2024-01-15 12:30:00', severity: 'medium', sensor: 'Network', area: 'Gateway', acknowledged: false, signalStatus: 'LL', aiAnalysis: 'Sensor malfunction detected. Signal unreliable, no actual safety concern.', aiStatus: 'Low attention', aiAccuracy: 92.1 },
+    { id: 1, title: 'Gas Level Critical', desc: 'Gas concentration above safety threshold in Zone A', time: '1 day ago', absoluteTime: '2024-01-15 14:28:00', severity: 'high', sensor: 'Gas-01', area: 'Zone A', acknowledged: false, signalStatus: 'HH', aiAnalysis: 'Critical gas leak detected. Immediate evacuation recommended.', aiStatus: 'High attention', aiAccuracy: 98.5 },
+    { id: 2, title: 'Temperature Alert', desc: 'Temperature fluctuation detected in sector 3', time: '5 day ago', absoluteTime: '2024-01-15 14:25:00', severity: 'medium', sensor: 'Temp-03', area: 'Sector 3', acknowledged: false, signalStatus: 'HH', aiAnalysis: 'False alarm - calibration test in progress. No safety risk detected.', aiStatus: 'Normal', aiAccuracy: 96.8 },
+    { id: 3, title: 'System Maintenance', desc: 'Scheduled maintenance due for sensor array', time: '7 day ago', absoluteTime: '2024-01-15 13:30:00', severity: 'low', sensor: 'System', area: 'Network', acknowledged: false, signalStatus: 'Normal', aiAnalysis: 'Routine maintenance required within 24 hours.', aiStatus: 'Normal', aiAccuracy: 89.7 },
+    { id: 4, title: 'Network Latency', desc: 'Increased response time from remote sensors', time: '7 day ago', absoluteTime: '2024-01-15 12:30:00', severity: 'medium', sensor: 'Network', area: 'Gateway', acknowledged: false, signalStatus: 'LL', aiAnalysis: 'Sensor malfunction detected. Signal unreliable, no actual safety concern.', aiStatus: 'Low attention', aiAccuracy: 92.1 },
   ]);
 
   const filteredAlerts = alerts.filter(alert => {
@@ -243,6 +243,7 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard">
+      <ThemeToggle />
       <div className="dashboard-container">
         {/* Header */}
         <header className="dashboard-header">
@@ -264,45 +265,6 @@ export default function Dashboard() {
             <div className="section-subtitle">Critical operational parameters</div>
           </div>
           <div className="kpi-grid">
-            {/* Gas Concentration Panel */}
-          <div className="card card--stat">
-            <div className="stat__header">
-              <h2 className="stat__label">Gas Concentration</h2>
-              <span className={`stat__badge stat__badge--${getGasStatus().badge}`}>
-                <span className="stat__badge-dot"></span>
-                {getGasStatus().text}
-              </span>
-            </div>
-
-            <div className="stat__value-row">
-              <div className="stat__gauge">
-                <div className="circular-progress">
-                  <svg viewBox="0 0 36 36" className="circular-chart">
-                    <path className="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                    <path 
-                      className={`circle circle--${getGasStatus().badge}`}
-                      strokeDasharray={`${Math.min((gasConcentration / industrialData.gasConcentration.safeLimit) * 100, 100)}, 100`}
-                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
-                    />
-                  </svg>
-                  <div className="circle-content">
-                    <span className="circle-value">{Math.round(gasConcentration)}</span>
-                    <span className="circle-unit">PPM</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="stat__footer">
-              <div className="stat__delta">
-                <span className={`stat__delta-icon ${industrialData.gasConcentration.change > 0 ? 'stat__delta-icon--up-bad' : 'stat__delta-icon--down-good'}`}>
-                  {industrialData.gasConcentration.change > 0 ? '↑' : '↓'}
-                </span>
-                <span className="stat__delta-value">{Math.abs(industrialData.gasConcentration.change)}%</span>
-                <span className="stat__delta-period">vs 1h</span>
-              </div>
-            </div>
-          </div>
 
           {/* Pressure Panel */}
           <div className="card card--stat">
@@ -381,40 +343,32 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Compressor Health Panel */}
+          {/* Flow Rate Panel */}
           <div className="card card--stat">
             <div className="stat__header">
-              <h2 className="stat__label">Compressor Health</h2>
-              <span className={`stat__badge stat__badge--${getCompressorStatus().badge}`}>
+              <h2 className="stat__label">Flow Rate</h2>
+              <span className={`stat__badge stat__badge--${getFlowRateStatus().badge}`}>
                 <span className="stat__badge-dot"></span>
-                {getCompressorStatus().text}
+                {getFlowRateStatus().text}
               </span>
             </div>
 
             <div className="stat__value-row">
-              <div className="compressor-status">
-                <div className={`status-indicator status-indicator--${getCompressorStatus().badge}`}>
-                  {compressorStatus}
+              <div className="stat__value stat__value--multi">
+                <div className="flow-reading">
+                  <span className="flow-label">Inlet</span>
+                  <span className="flow-value">{Math.round(inletFlowRate).toLocaleString()} <small>m³/h</small></span>
                 </div>
-                <div className="vibration-reading">
-                  <span className="vibration-label">Vibration</span>
-                  <span className="vibration-value">{vibrationLevel.toFixed(1)} <small>mm/s</small></span>
-                  <div className="vibration-gauge">
-                    <div 
-                      className={`vibration-bar vibration-bar--${vibrationLevel > 3.5 ? 'warning' : 'safe'}`}
-                      style={{ width: `${Math.min((vibrationLevel / industrialData.compressor.vibration.safeLimit) * 100, 100)}%` }}
-                    />
-                  </div>
+                <div className="flow-reading">
+                  <span className="flow-label">Outlet</span>
+                  <span className="flow-value">{Math.round(outletFlowRate).toLocaleString()} <small>m³/h</small></span>
+                </div>
+                <div className="flow-reading flow-reading--highlight">
+                  <span className="flow-label">Differential</span>
+                  <span className="flow-value">{Math.round(outletFlowRate - inletFlowRate)} <small>m³/h</small></span>
                 </div>
               </div>
             </div>
-
-            <div className="stat__footer">
-              <div className="maintenance-info">
-                <span className="maintenance-label">Last Maintenance</span>
-                <span className="maintenance-date">{lastMaintenance}</span>
-            </div>
-          </div>
           </div>
           </div>
         </section>
@@ -426,30 +380,58 @@ export default function Dashboard() {
             <div className="section-subtitle">Supporting system indicators</div>
           </div>
           <div className="secondary-grid">
-            {/* Flow Rate Mini-Card */}
-          <div className="card card--mini">
-            <div className="mini__header">
-              <h3 className="mini__title">Flow Rate</h3>
-              <span className={`mini__status mini__status--${getFlowRateStatus().badge}`}>{getFlowRateStatus().text}</span>
-            </div>
-            <div className="mini__content">
-              <div className="flow-readings">
-                <div className="flow-item">
-                  <span className="flow-label">Inlet</span>
-                  <span className="flow-value">{Math.round(inletFlowRate).toLocaleString()} <small>m³/h</small></span>
+            {/* Gas Concentration Mini-Card */}
+            <div className="card card--mini">
+              <div className="mini__header">
+                <h3 className="mini__title">Gas Concentration</h3>
+                <span className={`mini__status mini__status--${getGasStatus().badge}`}>{getGasStatus().text}</span>
+              </div>
+              <div className="mini__content">
+                <div className="gas-concentration-display">
+                  <span className="gas-value">{Math.round(gasConcentration)}</span>
+                  <span className="gas-unit">PPM</span>
                 </div>
-                <div className="flow-item">
-                  <span className="flow-label">Outlet</span>
-                  <span className="flow-value">{Math.round(outletFlowRate).toLocaleString()} <small>m³/h</small></span>
+                <div className="gas-gauge">
+                  <div
+                    className={`gas-bar gas-bar--${gasConcentration > 20 ? 'warning' : 'safe'}`}
+                    style={{ width: `${Math.min((gasConcentration / industrialData.gasConcentration.safeLimit) * 100, 100)}%` }}
+                  />
                 </div>
               </div>
             </div>
-          </div>
+
+            {/* Compressor Status Mini-Card */}
+            <div className="card card--mini">
+              <div className="mini__header">
+                <h3 className="mini__title">Compressor Status</h3>
+              </div>
+              <div className="mini__content">
+                <div className="compressor-status-mini">
+                  <span className="compressor-status-text">{compressorStatus}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Vibration Mini-Card */}
+            <div className="card card--mini">
+              <div className="mini__header">
+                <h3 className="mini__title">Vibration</h3>
+                <span className={`mini__status mini__status--${vibrationLevel > 7.1 ? 'critical' : vibrationLevel > 4.7 ? 'warning' : 'normal'}`}>
+                  {vibrationLevel > 7.1 ? 'Critical' : vibrationLevel > 4.7 ? 'Warning' : 'Normal'}
+                </span>
+              </div>
+              <div className="mini__content">
+                <div className="vibration-reading-mini">
+                  <span className="vibration-value-mini">{vibrationLevel.toFixed(1)} <small>mm/s</small></span>
+                </div>
+              </div>
+            </div>
+
 
           {/* Speed (RPM) Mini-Card */}
           <div className="card card--mini">
             <div className="mini__header">
-              <h3 className="mini__title">Speed</h3>
+              <h3 className="mini__title">CompressorSpeed</h3>
               <span className={`mini__status mini__status--${getSpeedStatus().badge}`}>{getSpeedStatus().text}</span>
             </div>
             <div className="mini__content">
@@ -469,8 +451,7 @@ export default function Dashboard() {
           {/* Fire & Smoke Detection Mini-Card */}
           <div className="card card--mini">
             <div className="mini__header">
-              <h3 className="mini__title">Fire & Smoke</h3>
-              <span className={`mini__status mini__status--${getFireSmokeStatus().badge}`}>{getFireSmokeStatus().text}</span>
+              <h3 className="mini__title">Fire & Smoke Detector</h3>
             </div>
             <div className="mini__content">
               <div className="detection-grid">
@@ -491,7 +472,7 @@ export default function Dashboard() {
           {/* ESD Valve Status Mini-Card */}
           <div className="card card--mini">
             <div className="mini__header">
-              <h3 className="mini__title">ESD Valve</h3>
+              <h3 className="mini__title">ESD Valve Status</h3>
               <span className={`mini__status mini__status--${getESDValveStatus().badge}`}>
                 {getESDValveStatus().text}
               </span>
@@ -565,84 +546,7 @@ export default function Dashboard() {
               </div>
 
 
-              {/* Vibration Spectrum Card */}
-              <div className="detail-card detail-card--wide">
-                <div className="detail-card__header">
-                  <h3 className="detail-card__title">Vibration Spectrum Analysis</h3>
-                  <span className="detail-card__badge detail-card__badge--success">Normal Range</span>
-                </div>
-                <div className="detail-card__content">
-                  <div className="vibration-analysis">
-                    <div className="spectrum-chart scientific-spectrum">
-                      <div className="spectrum-header">
-                        <h4 className="spectrum-title">Frequency Domain Analysis</h4>
-                        <div className="spectrum-controls">
-                          <span className="control-label">FFT Size: 1024</span>
-                          <span className="control-label">Window: Hanning</span>
-                        </div>
-                      </div>
-                      <div className="spectrum-grid">
-                        <div className="spectrum-y-axis">
-                          <div className="y-tick">3.5</div>
-                          <div className="y-tick">2.5</div>
-                          <div className="y-tick">1.5</div>
-                          <div className="y-tick">0.5</div>
-                          <div className="y-tick">0.0</div>
-                        </div>
-                        <div className="spectrum-bars scientific-bars">
-                          {spectrumData.frequencies.map((freq, index) => {
-                            const amplitude = freq;
-                            const percentage = (amplitude / 3.5) * 100;
-                            
-                            return (
-                              <div key={index} className="spectrum-bar scientific-bar" style={{height: `${percentage}%`}}>
-                                <div className="bar-content">
-                                  <span className="bar-amplitude">{amplitude.toFixed(2)}</span>
-                                  <span className="bar-units">mm/s</span>
-                                </div>
-                                <div className="bar-base">
-                                  <span className="harmonic-label">{index + 1}×</span>
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                      <div className="spectrum-x-axis">
-                        <div className="x-axis-labels">
-                          <span className="freq-label">59.7<sub>Hz</sub></span>
-                          <span className="freq-label">119.4<sub>Hz</sub></span>
-                          <span className="freq-label">179.1<sub>Hz</sub></span>
-                          <span className="freq-label">238.8<sub>Hz</sub></span>
-                          <span className="freq-label">298.5<sub>Hz</sub></span>
-                        </div>
-                        <div className="x-axis-title">Frequency [Hz]</div>
-                      </div>
-                      <div className="spectrum-footer">
-                        <div className="analysis-params">
-                          <span className="param">Δf: 59.7Hz</span>
-                          <span className="param">RMS: {spectrumData.rmsVelocity.toFixed(2)} mm/s</span>
-                          <span className="param">Peak: {Math.max(...spectrumData.frequencies).toFixed(2)} mm/s</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="vibration-metrics">
-                      <div className="vib-metric">
-                        <span className="vib-label">RMS Velocity</span>
-                        <span className="vib-value">{spectrumData.rmsVelocity.toFixed(1)} <small>mm/s</small></span>
-                      </div>
-                      <div className="vib-metric">
-                        <span className="vib-label">Peak Acceleration</span>
-                        <span className="vib-value">{spectrumData.peakAcceleration.toFixed(2)} <small>g</small></span>
-                      </div>
-                      <div className="vib-metric">
-                        <span className="vib-label">Crest Factor</span>
-                        <span className="vib-value">{spectrumData.crestFactor.toFixed(1)}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
             </div>
           </section>
         )}
@@ -749,12 +653,14 @@ export default function Dashboard() {
                       <h3 className="alert__title">{alert.title}</h3>
                       <p className="alert__desc">{alert.desc}</p>
                       <div className="alert__metadata">
-                        <div className="alert__signal-status">
-                          <span className="alert__label">Signal Status:</span>
-                          <span className={`alert__status-badge alert__status-badge--${alert.signalStatus.toLowerCase()}`}>
-                            {alert.signalStatus}
-                          </span>
-                        </div>
+                        {alert.title !== 'Network Latency' && alert.title !== 'System Maintenance' && (
+                          <div className="alert__signal-status">
+                            <span className="alert__label">Signal Status:</span>
+                            <span className={`alert__status-badge alert__status-badge--${alert.signalStatus.toLowerCase()}`}>
+                              {alert.signalStatus}
+                            </span>
+                          </div>
+                        )}
                         <div className="alert__ai-analysis">
                           <span className="alert__label">AI Analysis:</span>
                           <div className="alert__ai-content">

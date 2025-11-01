@@ -1,4 +1,9 @@
 #root {
   width: 100%;
   height: 100%;
+  background-color: #ffffff;
+}
+
+html[data-theme="dark"] #root {
+  background-color: #0f172a;
 }

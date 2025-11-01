@@ -136,7 +136,7 @@ def main():
             log.info("Port 8000 is available")
 
         log.info(f"Starting server on http://127.0.0.1:{port}")
-        log.info("Frontend will be available at: http://127.0.0.1:{port}/GasDetection/")
+        log.info(f"Frontend will be available at: http://127.0.0.1:{port}/GasDetection/")
         log.info("Press Ctrl+C to stop the server")
 
         # Open browser after a short delay
