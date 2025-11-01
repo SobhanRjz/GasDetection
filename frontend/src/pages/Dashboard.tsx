@@ -24,13 +24,6 @@ export default function Dashboard() {
   const [smokeDetectionStatus] = useState('OK'); // OK, Alarm
   const [esdValveStatus] = useState('Open'); // Open, Closed, Fault
   
-  // Vibration spectrum data
-  const [spectrumData, setSpectrumData] = useState({
-    frequencies: [4.2, 3.1, 2.9, 3.8, 3.4], // Higher values for industrial compressor
-    rmsVelocity: 4.2,
-    peakAcceleration: 0.95, // g-force
-    crestFactor: 3.1
-  });
   
 
   // Live data simulation
@@ -105,16 +98,7 @@ export default function Dashboard() {
         return Math.max(1450, Math.min(1520, newValue));
       });
 
-      // Spectrum data
-      setSpectrumData(prev => ({
-        frequencies: prev.frequencies.map(freq => {
-          const variation = (Math.random() - 0.5) * 0.25;
-          return Math.max(2.8, Math.min(5.2, freq + variation));
-        }),
-        rmsVelocity: Math.max(3.8, Math.min(4.6, prev.rmsVelocity + (Math.random() - 0.5) * 0.12)),
-        peakAcceleration: Math.max(0.8, Math.min(1.2, prev.peakAcceleration + (Math.random() - 0.5) * 0.05)),
-        crestFactor: Math.max(2.8, Math.min(3.6, prev.crestFactor + (Math.random() - 0.5) * 0.08))
-      }));
+      
 
 
     }, 2000); // Update every 2 seconds
@@ -190,11 +174,6 @@ export default function Dashboard() {
     return { badge: 'equipment-normal', text: 'Normal' };
   };
 
-  const getCompressorStatus = () => {
-    // Equipment category: Blue/Yellow/Orange (Pressure, Temperature, Flow, RPM)
-    return { badge: 'equipment-normal', text: 'Running' };
-  };
-
   const getFlowRateStatus = () => {
     // Equipment category: Blue/Yellow/Orange (Pressure, Temperature, Flow, RPM)
     return { badge: 'equipment-normal', text: 'Normal' };
@@ -203,11 +182,6 @@ export default function Dashboard() {
   const getSpeedStatus = () => {
     // Equipment category: Blue/Yellow/Orange (Pressure, Temperature, Flow, RPM)
     return { badge: 'equipment-normal', text: 'Normal' };
-  };
-
-  const getFireSmokeStatus = () => {
-    // Safety category: Green/Red (Gas, Fire, Smoke)
-    return { badge: 'safety-safe', text: 'All Clear' };
   };
 
   const getESDValveStatus = () => {
