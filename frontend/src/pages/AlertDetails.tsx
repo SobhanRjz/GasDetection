@@ -85,9 +85,9 @@ export default function AlertDetails() {
       sensorType: 'System Monitor',
       currentValue: 0,
       thresholdValue: 0,
-      unit: 'Status',
+      unit: '',
       trend: 'Scheduled',
-      duration: 'N/A',
+      duration: '-',
       sparklineData: [0, 0, 0, 0, 0], // System status - flat line
       actions: [
         { text: 'Maintenance scheduled', status: 'completed' },
@@ -320,7 +320,7 @@ export default function AlertDetails() {
                 <div className="card-content">
                   <div className="info-row">
                     <span className="info-label info-label--sentence">Value:</span>
-                    <span className="info-value info-value--highlight">{selectedAlert.currentValue} {selectedAlert.unit}</span>
+                    <span className="info-value info-value--highlight">{selectedAlert.unit === '' ? '-' : `${selectedAlert.currentValue} ${selectedAlert.unit}`}</span>
                   </div>
                   <div className="info-row">
                     <span className="info-label">Trend:</span>

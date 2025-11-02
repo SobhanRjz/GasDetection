@@ -8,7 +8,7 @@ export default function Dashboard() {
   
   // Live industrial monitoring data with realistic variations
   const [gasConcentration, setGasConcentration] = useState(8.5); // PPM (LEL for methane is ~50,000 PPM, normal is <10 PPM)
-  const [inletPressure, setInletPressure] = useState(64.2); // bar (typical gas transmission pressure 40-70 bar)
+  const [inletPressure, setInletPressure] = useState(40.2); // bar (typical gas transmission pressure 40-70 bar)
   const [outletPressure, setOutletPressure] = useState(65.8); // bar (compression increases pressure)
   const [gasTemperature, setGasTemperature] = useState(29.5); // °C (ambient + compression heat)
   const [inletTemp, setInletTemp] = useState(18.5); // °C (ground temperature)
@@ -40,7 +40,7 @@ export default function Dashboard() {
       setInletPressure(prev => {
         const variation = (Math.random() - 0.5) * 0.6;
         const newValue = prev + variation;
-        return Math.max(63, Math.min(65, newValue));
+        return Math.max(39.4, Math.min(65, newValue));
       });
 
       // Outlet pressure (63-68 bar range)
@@ -405,7 +405,7 @@ export default function Dashboard() {
           {/* Speed (RPM) Mini-Card */}
           <div className="card card--mini">
             <div className="mini__header">
-              <h3 className="mini__title">CompressorSpeed</h3>
+              <h3 className="mini__title">Compressor Speed</h3>
               <span className={`mini__status mini__status--${getSpeedStatus().badge}`}>{getSpeedStatus().text}</span>
             </div>
             <div className="mini__content">
