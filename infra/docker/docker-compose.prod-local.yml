@@ -1,0 +1,60 @@
+# Production-like Local Environment with Nginx
+# Usage: docker-compose -f docker-compose.yml -f docker-compose.prod.yml -f docker-compose.prod-local.yml up -d
+# This configuration adds nginx for local production testing
+
+version: '3.8'
+
+services:
+  backend:
+    ports:
+      - "127.0.0.1:50002:8000"
+
+  frontend:
+    ports:
+      - "127.0.0.1:50001:80"
+
+  nginx:
+    image: nginx:alpine
+    container_name: gasdetection-nginx
+    restart: always
+    ports:
+      - "127.0.0.1:80:80"
+      - "127.0.0.1:443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - nginx-cache:/var/cache/nginx
+      - nginx-logs:/var/log/nginx
+    depends_on:
+      backend:
+        condition: service_healthy
+      frontend:
+        condition: service_healthy
+    networks:
+      - gasdetection-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1:80/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  nginx-cache:
+    driver: local
+  nginx-logs:
+    driver: local
+

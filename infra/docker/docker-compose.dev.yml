@@ -1,0 +1,45 @@
+# Development Environment Docker Compose
+# Usage: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.backend
+    ports:
+      - "127.0.0.1:50002:8000"
+    volumes:
+      - ../../backend:/app
+      - backend-cache:/root/.cache
+    environment:
+      - PYTHONUNBUFFERED=1
+      - HOST=0.0.0.0
+      - PORT=8000
+      - RELOAD=true
+      - LOG_LEVEL=debug
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+  frontend:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile.frontend.dev
+    ports:
+      - "127.0.0.1:50001:5173"
+    volumes:
+      - ../../frontend:/app
+      - /app/node_modules
+      - frontend-cache:/root/.npm
+    environment:
+      - NODE_ENV=development
+      - VITE_API_URL=http://127.0.0.1:8000
+    depends_on:
+      - backend
+
+volumes:
+  backend-cache:
+    driver: local
+  frontend-cache:
+    driver: local
+
