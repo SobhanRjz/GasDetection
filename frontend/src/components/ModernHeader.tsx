@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import logoEn from '../assets/LOGO-en.png';
 
 // Simple inline SVG icons since lucide-react installation had issues
 
@@ -52,7 +53,9 @@ const ModernHeader: React.FC = () => {
       <div className="modern-header-container">
         {/* Brand Section - Left */}
         <div className="brand-section">
-          <span className="brand-name">G.C.S</span>
+          <Link to="/" className="brand-logo-link">
+            <img src={logoEn} alt="G.C.S Logo" className="brand-logo" />
+          </Link>
           <span className="page-title">{getPageTitle()}</span>
         </div>
 

@@ -63,7 +63,7 @@ For server deployment where nginx is configured separately:
 cd infra/docker
 
 # Build and start services
-docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml -p falsesignal-prod up -d --build
 
 # View logs
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml logs -f
